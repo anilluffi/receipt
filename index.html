@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Розписка</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #f2f2f2;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .sheet {
+      width: 980px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 18px 22px 16px;
+      border: 1px solid #000;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 500;
+      margin: 0 0 18px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .line-row {
+      display: flex;
+      align-items: flex-end;
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .label {
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .line {
+      flex: 1;
+      border-bottom: 2px solid #000;
+      height: 24px;
+      margin-left: 0;
+      position: relative;
+    }
+
+    .line.with-text {
+      display: flex;
+      align-items: flex-end;
+      padding-left: 8px;
+      font-size: 24px;
+    }
+
+    .line.short-gap {
+      margin-left: 8px;
+    }
+
+    .sum-block {
+      margin-bottom: 12px;
+    }
+
+    .sum-top {
+      display: flex;
+      align-items: flex-end;
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .sum-top .sum-label {
+      white-space: nowrap;
+    }
+
+    .sum-top .sum-line {
+      flex: 1;
+      border-bottom: 2px solid #000;
+      height: 24px;
+      margin-left: 0;
+    }
+
+    .sum-top .hint {
+      white-space: nowrap;
+      margin-left: 8px;
+      font-size: 22px;
+    }
+
+    .sum-bottom {
+      display: flex;
+      align-items: flex-end;
+      margin-left: 0;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .sum-bottom .sum-line-text {
+      flex: 1;
+      border-bottom: 2px solid #000;
+      height: 24px;
+    }
+
+    .sum-bottom .hint {
+      white-space: nowrap;
+      margin-left: 8px;
+      font-size: 22px;
+    }
+
+    .spacer {
+      height: 8px;
+    }
+
+    .bottom-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 40px;
+      margin-top: 8px;
+    }
+
+    .bottom-field {
+      display: flex;
+      align-items: flex-end;
+      flex: 1;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .bottom-field.small {
+      flex: 0.9;
+    }
+
+    .bottom-field.medium {
+      flex: 1.1;
+    }
+
+    .bottom-field .line {
+      margin-left: 8px;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .sheet {
+        width: 100%;
+        border: 1px solid #000;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="title">РОЗПИСКА</div>
+
+    <div class="line-row">
+      <div class="label">Дана</div>
+      <div class="line"></div>
+    </div>
+
+    <div class="line-row">
+      <div class="label">№ телефону</div>
+      <div class="line short-gap"></div>
+    </div>
+
+    <div class="sum-block">
+      <div class="sum-top">
+        <div class="sum-label">Сума</div>
+        <div class="sum-line"></div>
+        <div class="hint">(цифра)</div>
+      </div>
+
+      <div class="sum-bottom">
+        <div class="sum-line-text"></div>
+        <div class="hint">(пропис)</div>
+      </div>
+    </div>
+
+    <div class="line-row">
+      <div class="label">Оператор</div>
+      <div class="line with-text">Вероніка</div>
+    </div>
+
+    <div class="line-row">
+      <div class="label">№тел робочий</div>
+      <div class="line short-gap"></div>
+    </div>
+
+    <div class="bottom-row">
+      <div class="bottom-field small">
+        <div class="label">Дата</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="bottom-field medium">
+        <div class="label">Підпис</div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

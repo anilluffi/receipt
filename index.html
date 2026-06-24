@@ -1,156 +1,182 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Розписка</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Розписка</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* ЧЕК */
+  .sheet {
+    width: 80mm;
+    padding: 5mm 4mm;
+    border: 1px dashed #000; /* ВНЕШНЯЯ РАМКА */
+    position: relative;
+  }
+
+  /* ВНУТРЕННЯЯ РАМКА (эффект квитанции) */
+  .sheet::before {
+    content: "";
+    position: absolute;
+    top: 3mm;
+    left: 3mm;
+    right: 3mm;
+    bottom: 3mm;
+    border: 1px solid #000;
+    pointer-events: none;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .row {
+    display: flex;
+    align-items: flex-end;
+    font-size: 12px;
+    margin-bottom: 4px;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .label {
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+
+  .line {
+    flex: 1;
+    border-bottom: 1px solid #000;
+    height: 14px;
+  }
+
+  .line.text {
+    display: flex;
+    align-items: flex-end;
+    padding-left: 4px;
+  }
+
+  .sum {
+    margin: 6px 0;
+    padding: 4px 0;
+    border-top: 1px dotted #000;
+    border-bottom: 1px dotted #000;
+  }
+
+  .sum-top,
+  .sum-bottom {
+    display: flex;
+    align-items: flex-end;
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  .hint {
+    margin-left: 4px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .bottom {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bottom .row {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  /* лёгкое разделение секций */
+  .divider {
+    border-top: 1px dashed #000;
+    margin: 4px 0;
+  }
+
+  @media print {
     body {
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: #fff;
     }
 
-    /* ЧЕКОВЫЙ ФОРМАТ */
     .sheet {
-      width: 300px; /* 80mm принтер */
-      margin: 0 auto;
-      padding: 10px;
+      border: 1px solid #000;
     }
-
-    .title {
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-
-    .row {
-      font-size: 14px;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .label {
-      white-space: nowrap;
-    }
-
-    .line {
-      flex: 1;
-      border-bottom: 1px solid #000;
-      height: 16px;
-      margin-left: 6px;
-    }
-
-    .sum-block {
-      margin: 8px 0;
-    }
-
-    .sum-title {
-      font-size: 14px;
-      display: flex;
-      align-items: flex-end;
-      margin-bottom: 4px;
-    }
-
-    .sum-line {
-      flex: 1;
-      border-bottom: 1px solid #000;
-      height: 16px;
-      margin-left: 6px;
-    }
-
-    .hint {
-      font-size: 12px;
-      margin-left: 6px;
-      white-space: nowrap;
-    }
-
-    .sum-text {
-      border-bottom: 1px solid #000;
-      height: 16px;
-    }
-
-    .bottom {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .col {
-      flex: 1;
-      font-size: 14px;
-    }
-
-    .col .line {
-      margin-left: 0;
-    }
-
-    @media print {
-      body {
-        width: 80mm;
-      }
-
-      .sheet {
-        width: 80mm;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
-  <div class="sheet">
+<div class="sheet">
 
-    <div class="title">РОЗПИСКА</div>
+  <div class="title">РОЗПИСКА</div>
 
-    <div class="row">
-      <div class="label">Дана</div>
+  <div class="row">
+    <div class="label">Дана</div>
+    <div class="line"></div>
+  </div>
+
+  <div class="row">
+    <div class="label">№ телефону</div>
+    <div class="line"></div>
+  </div>
+
+  <div class="sum">
+    <div class="sum-top">
+      <div class="label">Сума</div>
       <div class="line"></div>
+      <div class="hint">(цифра)</div>
     </div>
 
-    <div class="row">
-      <div class="label">№ телефону</div>
+    <div class="sum-bottom">
+      <div class="label"></div>
       <div class="line"></div>
-    </div>
-
-    <div class="sum-block">
-      <div class="sum-title">
-        Сума
-        <div class="sum-line"></div>
-        <div class="hint">(цифра)</div>
-      </div>
-
-      <div class="sum-text"></div>
       <div class="hint">(пропис)</div>
     </div>
+  </div>
 
-    <!-- ОПЕРАТОР УБРАН -->
+  <div class="row">
+    <div class="label">Оператор</div>
+    <div class="line text"></div>
+  </div>
 
+  <div class="row">
+    <div class="label">№тел робочий</div>
+    <div class="line"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="bottom">
     <div class="row">
-      <div class="label">№ тел робочий</div>
+      <div class="label">Дата</div>
       <div class="line"></div>
     </div>
 
-    <div class="bottom">
-      <div class="col">
-        <div class="label">Дата</div>
-        <div class="line"></div>
-      </div>
-
-      <div class="col">
-        <div class="label">Підпис</div>
-        <div class="line"></div>
-      </div>
+    <div class="row">
+      <div class="label">Підпис</div>
+      <div class="line"></div>
     </div>
-
   </div>
+
+</div>
 </body>
 </html>
